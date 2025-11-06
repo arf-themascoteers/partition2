@@ -12,8 +12,8 @@ def print_partition(s, numbers):
 
     print("\nPartition:")
 
-    print(f"Sum A: {sum_A}")
-    print(f"Sum B: {sum_B}")
+    print(f"Sum A: {sum_A} {len(subset_A)}")
+    print(f"Sum B: {sum_B} {len(subset_B)}")
 
 
 numbers = torch.rand(100, dtype=torch.float32)
@@ -32,7 +32,7 @@ for epoch in range(iterations):
     bin = torch.tanh(s)
     subset_sum = torch.sum(numbers * bin)
     norm = torch.norm(bin, p=1)
-    energy = torch.abs(subset_sum) - norm/100
+    energy = torch.abs(subset_sum) #- norm/100
     energy.backward()
     optimizer.step()
 
